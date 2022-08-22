@@ -202,7 +202,7 @@
 		094AC5AB28AB882A002C2525 /* PrimeNumberApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeNumberApp.swift; sourceTree = "<group>"; };
 		094AC5AC28AB882A002C2525 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		094AC5AD28AB882B002C2525 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		094AC5B228AB882B002C2525 /* PrimeNumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrimeNumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		094AC5B228AB882B002C2525 /* AIPrimeNumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AIPrimeNumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		094AC5B828AB882B002C2525 /* PrimeNumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrimeNumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		094AC5BA28AB882B002C2525 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		094AC5BF28AB882B002C2525 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,7 +378,7 @@
 		094AC5B328AB882B002C2525 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				094AC5B228AB882B002C2525 /* PrimeNumber.app */,
+				094AC5B228AB882B002C2525 /* AIPrimeNumber.app */,
 				094AC5B828AB882B002C2525 /* PrimeNumber.app */,
 				094AC5BF28AB882B002C2525 /* Tests iOS.xctest */,
 				094AC5CB28AB882B002C2525 /* Tests macOS.xctest */,
@@ -555,7 +555,7 @@
 			packageProductDependencies = (
 			);
 			productName = "PrimeNumber (iOS)";
-			productReference = 094AC5B228AB882B002C2525 /* PrimeNumber.app */;
+			productReference = 094AC5B228AB882B002C2525 /* AIPrimeNumber.app */;
 			productType = "com.apple.product-type.application";
 		};
 		094AC5B728AB882B002C2525 /* PrimeNumber (macOS) */ = {
@@ -1276,7 +1276,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J7JWA4HGS6;
+				DEVELOPMENT_TEAM = 8Z2YL2K85R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1290,8 +1290,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aks..PrimeNumber;
-				PRODUCT_NAME = PrimeNumber;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aicadium.PrimeNumber;
+				PRODUCT_NAME = AIPrimeNumber;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1307,7 +1307,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J7JWA4HGS6;
+				DEVELOPMENT_TEAM = 8Z2YL2K85R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1321,8 +1321,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aks..PrimeNumber;
-				PRODUCT_NAME = PrimeNumber;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aicadium.PrimeNumber;
+				PRODUCT_NAME = AIPrimeNumber;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

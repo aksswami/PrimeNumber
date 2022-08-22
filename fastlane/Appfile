@@ -1,0 +1,8 @@
+app_identifier("com.aicadium.PrimeNumber") # The bundle identifier of your app
+apple_id("amit.swami@aicadium.ai") # Your Apple email address
+
+itc_team_id("125048479") # App Store Connect Team ID
+team_id("8Z2YL2K85R") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
