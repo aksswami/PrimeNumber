@@ -173,7 +173,7 @@ public struct CounterView: View {
             .disabled(store.value.isNthPrimeButtonDisabled)
         }
         .font(.title)
-        .navigationBarTitle("Counter demo")
+        .navigationTitle("Counter demo")
         .sheet(isPresented: self.$isPrimeModalShown) {
             IsPrimeModalView(
                 store: self.store.view(

@@ -48,6 +48,14 @@
 		094AC67B28AB8CD4002C2525 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094AC67A28AB8CD4002C2525 /* Counter.swift */; };
 		094AC67D28AB8D0E002C2525 /* PrimeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094AC67C28AB8D0E002C2525 /* PrimeModal.swift */; };
 		094AC67F28ABF031002C2525 /* WolframeAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094AC5EA28AB88E8002C2525 /* WolframeAlpha.swift */; };
+		0962052828B369790095F930 /* ComposibleArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 094AC65928AB8B26002C2525 /* ComposibleArchitecture.framework */; };
+		0962052928B369790095F930 /* ComposibleArchitecture.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 094AC65928AB8B26002C2525 /* ComposibleArchitecture.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0962052C28B369790095F930 /* Counter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 094AC5F228AB8AF4002C2525 /* Counter.framework */; };
+		0962052D28B369790095F930 /* Counter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 094AC5F228AB8AF4002C2525 /* Counter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0962053028B369790095F930 /* FavoritePrimes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 094AC63728AB8B12002C2525 /* FavoritePrimes.framework */; };
+		0962053128B369790095F930 /* FavoritePrimes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 094AC63728AB8B12002C2525 /* FavoritePrimes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0962053428B369790095F930 /* PrimeModal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 094AC61528AB8B01002C2525 /* PrimeModal.framework */; };
+		0962053528B369790095F930 /* PrimeModal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 094AC61528AB8B01002C2525 /* PrimeModal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09F2989028ADF0D00076AC84 /* Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2988F28ADF0D00076AC84 /* Effects.swift */; };
 		09F2989328AFFD770076AC84 /* ComposibleArchitectureTestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2989228AFFD770076AC84 /* ComposibleArchitectureTestSupport.swift */; };
 /* End PBXBuildFile section */
@@ -172,6 +180,34 @@
 			remoteGlobalIDString = 094AC65828AB8B26002C2525;
 			remoteInfo = ComposibleArchitecture;
 		};
+		0962052A28B369790095F930 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 094AC5A628AB882A002C2525 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 094AC65828AB8B26002C2525;
+			remoteInfo = ComposibleArchitecture;
+		};
+		0962052E28B369790095F930 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 094AC5A628AB882A002C2525 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 094AC5F128AB8AF4002C2525;
+			remoteInfo = Counter;
+		};
+		0962053228B369790095F930 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 094AC5A628AB882A002C2525 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 094AC63628AB8B12002C2525;
+			remoteInfo = FavoritePrimes;
+		};
+		0962053628B369790095F930 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 094AC5A628AB882A002C2525 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 094AC61428AB8B01002C2525;
+			remoteInfo = PrimeModal;
+		};
 		09F2988D28ADEEA70076AC84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 094AC5A628AB882A002C2525 /* Project object */;
@@ -192,6 +228,20 @@
 				094AC60828AB8AF4002C2525 /* Counter.framework in Embed Frameworks */,
 				094AC66F28AB8B27002C2525 /* ComposibleArchitecture.framework in Embed Frameworks */,
 				094AC64D28AB8B12002C2525 /* FavoritePrimes.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0962053828B369790095F930 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0962052928B369790095F930 /* ComposibleArchitecture.framework in Embed Frameworks */,
+				0962052D28B369790095F930 /* Counter.framework in Embed Frameworks */,
+				0962053528B369790095F930 /* PrimeModal.framework in Embed Frameworks */,
+				0962053128B369790095F930 /* FavoritePrimes.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +311,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0962052828B369790095F930 /* ComposibleArchitecture.framework in Frameworks */,
+				0962052C28B369790095F930 /* Counter.framework in Frameworks */,
+				0962053428B369790095F930 /* PrimeModal.framework in Frameworks */,
+				0962053028B369790095F930 /* FavoritePrimes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +415,7 @@
 				094AC65A28AB8B26002C2525 /* ComposibleArchitecture */,
 				094AC66828AB8B27002C2525 /* ComposibleArchitectureTests */,
 				094AC5B328AB882B002C2525 /* Products */,
+				0962052728B369790095F930 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -495,6 +550,13 @@
 			path = ComposibleArchitectureTests;
 			sourceTree = "<group>";
 		};
+		0962052728B369790095F930 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -565,10 +627,15 @@
 				094AC5B428AB882B002C2525 /* Sources */,
 				094AC5B528AB882B002C2525 /* Frameworks */,
 				094AC5B628AB882B002C2525 /* Resources */,
+				0962053828B369790095F930 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0962052B28B369790095F930 /* PBXTargetDependency */,
+				0962052F28B369790095F930 /* PBXTargetDependency */,
+				0962053328B369790095F930 /* PBXTargetDependency */,
+				0962053728B369790095F930 /* PBXTargetDependency */,
 			);
 			name = "PrimeNumber (macOS)";
 			productName = "PrimeNumber (macOS)";
@@ -1151,6 +1218,26 @@
 			target = 094AC65828AB8B26002C2525 /* ComposibleArchitecture */;
 			targetProxy = 094AC68428ABF48A002C2525 /* PBXContainerItemProxy */;
 		};
+		0962052B28B369790095F930 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 094AC65828AB8B26002C2525 /* ComposibleArchitecture */;
+			targetProxy = 0962052A28B369790095F930 /* PBXContainerItemProxy */;
+		};
+		0962052F28B369790095F930 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 094AC5F128AB8AF4002C2525 /* Counter */;
+			targetProxy = 0962052E28B369790095F930 /* PBXContainerItemProxy */;
+		};
+		0962053328B369790095F930 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 094AC63628AB8B12002C2525 /* FavoritePrimes */;
+			targetProxy = 0962053228B369790095F930 /* PBXContainerItemProxy */;
+		};
+		0962053728B369790095F930 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 094AC61428AB8B01002C2525 /* PrimeModal */;
+			targetProxy = 0962053628B369790095F930 /* PBXContainerItemProxy */;
+		};
 		09F2988E28ADEEA70076AC84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 094AC65828AB8B26002C2525 /* ComposibleArchitecture */;
@@ -1461,6 +1548,7 @@
 		094AC60A28AB8AF4002C2525 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1482,6 +1570,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1493,6 +1583,7 @@
 		094AC60B28AB8AF4002C2525 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1514,6 +1605,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1563,6 +1656,7 @@
 		094AC62D28AB8B01002C2525 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1584,6 +1678,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1595,6 +1691,7 @@
 		094AC62E28AB8B01002C2525 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1616,6 +1713,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1665,6 +1764,7 @@
 		094AC64F28AB8B12002C2525 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1686,6 +1786,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1697,6 +1799,7 @@
 		094AC65028AB8B12002C2525 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1718,6 +1821,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1767,6 +1872,7 @@
 		094AC67128AB8B27002C2525 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1788,6 +1894,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1799,6 +1907,7 @@
 		094AC67228AB8B27002C2525 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1820,6 +1929,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

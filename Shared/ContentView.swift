@@ -173,7 +173,7 @@ struct ContentView: View {
                     )
                 )
             }
-            .navigationBarTitle("State management")
+            .navigationTitle("State management")
         }
     }
 }

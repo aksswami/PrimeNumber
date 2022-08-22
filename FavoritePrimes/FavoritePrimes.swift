@@ -176,7 +176,7 @@ public struct FavoritePrimesView: View {
                 self.store.send(.deleteFavoritePrimes(indexSet))
             }
         }
-        .navigationBarTitle("Favorite Primes")
+        .navigationTitle("Favorite Primes")
         .toolbar {
             HStack {
                 Button("Save") {
