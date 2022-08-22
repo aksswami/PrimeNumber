@@ -7,19 +7,19 @@ import Counter
 struct AppState {
     var count = 0
     var favoritePrimes: [Int] = []
-    var loggedInUser: User? = nil
+    var loggedInUser: User?
     var activityFeed: [Activity] = []
-    var alertNthPrime: PrimeAlert? = nil
-    var isNthPrimeButtonDisabled: Bool = false
-    
+    var alertNthPrime: PrimeAlert?
+    var isNthPrimeButtonDisabled = false
+
     struct Activity {
         let timestamp: Date
         let type: ActivityType
-        
+
         enum ActivityType {
             case addedFavoritePrime(Int)
             case removedFavoritePrime(Int)
-            
+
             var addedFavoritePrime: Int? {
                 get {
                     guard case let .addedFavoritePrime(value) = self else { return nil }
@@ -30,7 +30,7 @@ struct AppState {
                     self = .addedFavoritePrime(newValue)
                 }
             }
-            
+
             var removedFavoritePrime: Int? {
                 get {
                     guard case let .removedFavoritePrime(value) = self else { return nil }
@@ -43,7 +43,7 @@ struct AppState {
             }
         }
     }
-    
+
     struct User {
         let id: Int
         let name: String
@@ -56,7 +56,7 @@ enum AppAction {
 //    case primeModal(PrimeModalAction)
     case counterView(CounterViewAction)
     case favoritePrimes(FavoritePrimesAction)
-    
+
     var counterView: CounterViewAction? {
         get {
             guard case let .counterView(value) = self else { return nil }
@@ -67,7 +67,7 @@ enum AppAction {
             self = .counterView(newValue)
         }
     }
-    
+
     var favoritePrimes: FavoritePrimesAction? {
         get {
             guard case let .favoritePrimes(value) = self else { return nil }
@@ -83,7 +83,6 @@ enum AppAction {
 func activityFeed(
     _ reducer: @escaping Reducer<AppState, AppAction>
 ) -> Reducer<AppState, AppAction> {
-    
     return { state, action in
         switch action {
         case .counterView(.counter),
@@ -95,22 +94,22 @@ func activityFeed(
             break
         case .counterView(.primeModal(.removeFavoritePrimeTapped)):
             state.activityFeed.append(.init(timestamp: Date(), type: .removedFavoritePrime(state.count)))
-            
+
         case .counterView(.primeModal(.saveFavoritePrimeTapped)):
             state.activityFeed.append(.init(timestamp: Date(), type: .addedFavoritePrime(state.count)))
-            
+
         case let .favoritePrimes(.deleteFavoritePrimes(indexSet)):
             for index in indexSet {
                 state.activityFeed.append(.init(timestamp: Date(), type: .removedFavoritePrime(state.favoritePrimes[index])))
             }
         }
-        
+
         return reducer(&state, action)
     }
 }
 
 
-
+// swiftlint:disable type_name
 struct _KeyPath<Root, Value> {
     let get: (Root) -> Value
     let set: (inout Root, Value) -> Void
@@ -145,11 +144,11 @@ let appReducer: Reducer<AppState, AppAction> = combine(
     pullback(counterViewReducer, value: \.counterView, action: \.counterView),
     pullback(favoritePrimesReducer, value: \.favoritePrimes, action: \.favoritePrimes)
 )
-//let appReducer: Reducer<AppState, AppAction> = pullback(_appReducer, value: \.self, action: \.self)
+// let appReducer: Reducer<AppState, AppAction> = pullback(_appReducer, value: \.self, action: \.self)
 
 struct ContentView: View {
     @ObservedObject var store: Store<AppState, AppAction>
-    
+
     var body: some View {
         NavigationView {
             List {

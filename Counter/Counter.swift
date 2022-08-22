@@ -24,12 +24,12 @@ public func counterReducer(state: inout CounterState, action: CounterAction) -> 
         state.count -= 1
 //        state.isPrime = nil
         return []
-        
+
     case .incrTapped:
         state.count += 1
 //        state.isPrime = nil
         return []
-        
+
     case .nthPrimeButtonTapped:
         state.isNthPrimeButtonDisabled = true
         return [
@@ -43,7 +43,7 @@ public func counterReducer(state: inout CounterState, action: CounterAction) -> 
         state.alertNthPrime = prime.map(PrimeAlert.init(prime:))
         state.isNthPrimeButtonDisabled = false
         return []
-        
+
     case .alertDismissButtonTapped:
         state.alertNthPrime = nil
         return []
@@ -81,7 +81,7 @@ struct CounterEnvironment {
 extension CounterEnvironment {
     static let live = CounterEnvironment(nthPrime: Counter.nthPrime)
 }
-
+// swiftlint:disable identifier_name 
 var Current = CounterEnvironment.live
 
 #if DEBUG
@@ -98,7 +98,7 @@ public struct CounterViewState: Equatable {
     public var favoritePrimes: [Int]
     public var isNthPrimeButtonDisabled: Bool
 //    public var isPrime: Bool? = nil
-    
+
     public init(
         alertNthPrime: PrimeAlert? = nil,
         count: Int = 0,
@@ -110,22 +110,22 @@ public struct CounterViewState: Equatable {
         self.favoritePrimes = favoritePrimes
         self.isNthPrimeButtonDisabled = isNthPrimeButtonDisabled
     }
-    
+
     var counter: CounterState {
         get { (self.alertNthPrime, self.count, self.isNthPrimeButtonDisabled) }
         set { (self.alertNthPrime, self.count, self.isNthPrimeButtonDisabled) = newValue }
     }
-    
+
     var primeModal: PrimeModalState {
         get { PrimeModalState(count: self.count, favoritePrimes: self.favoritePrimes) }
         set { (self.count, self.favoritePrimes) = (newValue.count, newValue.favoritePrimes) }
     }
 }
 
-public enum CounterViewAction:Equatable {
+public enum CounterViewAction: Equatable {
     case counter(CounterAction)
     case primeModal(PrimeModalAction)
-    
+
     var counter: CounterAction? {
         get {
             guard case let .counter(value) = self else { return nil }
@@ -136,7 +136,7 @@ public enum CounterViewAction:Equatable {
             self = .counter(newValue)
         }
     }
-    
+
     var primeModal: PrimeModalAction? {
         get {
             guard case let .primeModal(value) = self else { return nil }
@@ -147,18 +147,17 @@ public enum CounterViewAction:Equatable {
             self = .primeModal(newValue)
         }
     }
-    
 }
 public struct CounterView: View {
     @ObservedObject var store: Store<CounterViewState, CounterViewAction>
     @State var isPrimeModalShown = false
     //    @State var alertNthPrime: PrimeAlert?
     //    @State var isNthPrimeButtonDisabled = false
-    
+
     public init(store: Store<CounterViewState, CounterViewAction>) {
         self.store = store
     }
-    
+
     public var body: some View {
         VStack {
             HStack {
@@ -182,7 +181,8 @@ public struct CounterView: View {
                         count: $0.count,
                         favoritePrimes: $0.favoritePrimes
 //                        isPrime: $0.isPrime
-                    ) },
+                    )
+                    },
                     action: { .primeModal($0) }
                 )
             )
@@ -198,7 +198,7 @@ public struct CounterView: View {
             )
         }
     }
-    
+
     func nthPrimeButtonAction() {
         self.store.send(.counter(.nthPrimeButtonTapped))
         //        self.isNthPrimeButtonDisabled = true

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import ComposibleArchitecture
 
-//public typealias PrimeModalState = (count: Int, favoritePrimes: [Int], isPrime: Bool?)
+// public typealias PrimeModalState = (count: Int, favoritePrimes: [Int], isPrime: Bool?)
 public struct PrimeModalState: Equatable {
     public var count: Int
     public var favoritePrimes: [Int] = []
@@ -17,7 +17,8 @@ public struct PrimeModalState: Equatable {
 
     public init(
         count: Int,
-        favoritePrimes: [Int]) {
+        favoritePrimes: [Int]
+    ) {
         self.count = count
         self.favoritePrimes = favoritePrimes
 //        self.isPrime = isPrime
@@ -29,11 +30,11 @@ public func primeModalReducer(state: inout PrimeModalState, action: PrimeModalAc
     case .removeFavoritePrimeTapped:
         state.favoritePrimes.removeAll(where: { $0 == state.count })
         return []
-        
+
     case .saveFavoritePrimeTapped:
         state.favoritePrimes.append(state.count)
         return []
-        
+
 //    case .checkPrime:
 //        return [
 ////            isPrime(state.count)
@@ -56,43 +57,39 @@ public enum PrimeModalAction {
 
 public struct IsPrimeModalView: View {
     @ObservedObject var store: Store<PrimeModalState, PrimeModalAction>
-    
+
     public init(store: Store<PrimeModalState, PrimeModalAction>) {
         self.store = store
     }
-    
+
     public var body: some View {
         VStack {
-//            if let isPrime = self.store.value.isPrime {
-                if isPrime(self.store.value.count) {
-                    Text("\(self.store.value.count) is prime 🎉")
-                    if self.store.value.favoritePrimes.contains(self.store.value.count) {
-                        Button("Remove from favorite primes") {
-                            self.store.send(.removeFavoritePrimeTapped)
-                        }
-                    } else {
-                        Button("Save to favorite primes") {
-                            self.store.send(.saveFavoritePrimeTapped)
-                        }
+            if isPrime(self.store.value.count) {
+                Text("\(self.store.value.count) is prime 🎉")
+                if self.store.value.favoritePrimes.contains(self.store.value.count) {
+                    Button("Remove from favorite primes") {
+                        self.store.send(.removeFavoritePrimeTapped)
                     }
                 } else {
-                    Text("\(self.store.value.count) is not prime :(")
+                    Button("Save to favorite primes") {
+                        self.store.send(.saveFavoritePrimeTapped)
+                    }
                 }
-//            } else {
-//                ProgressView()
-//            }
+            } else {
+                Text("\(self.store.value.count) is not prime :(")
+            }
         }
 //        .onAppear{ self.store.send(.checkPrime) }
     }
 }
 
 
-private func isPrime (_ p: Int) -> Bool {
+private func isPrime (_ prime: Int) -> Bool {
 //    Effect { callback in
-        if p <= 1 { return false }
-        if p <= 3 { return true }
-        for i in 2...Int(sqrtf(Float(p))) {
-            if p % i == 0 { return false }
+    if prime <= 1 { return false }
+    if prime <= 3 { return false }
+        for i in 2...Int(sqrtf(Float(prime))) {
+            if prime % i == 0 { return false }
         }
         return true
 //    }
@@ -101,7 +98,7 @@ private func isPrime (_ p: Int) -> Bool {
 }
 
 
-//private func isPrime (_ p: Int) -> Effect<Bool> {
+// private func isPrime (_ p: Int) -> Effect<Bool> {
 //    Effect { callback in
 //        if p <= 1 { return callback(false) }
 //        if p <= 3 { return callback(true) }
@@ -112,4 +109,4 @@ private func isPrime (_ p: Int) -> Bool {
 //    }
 //    .run(on: .global(qos: .background))
 //    .receive(on: .main)
-//}
+// }

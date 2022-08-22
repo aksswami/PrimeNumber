@@ -9,7 +9,6 @@ import XCTest
 @testable import PrimeModal
 
 class PrimeModalTests: XCTestCase {
-    
     func testSaveFavoritePrimesTapped() throws {
         var state = PrimeModalState(count: 2, favoritePrimes: [3, 5])
         let effects = primeModalReducer(
@@ -18,7 +17,7 @@ class PrimeModalTests: XCTestCase {
         XCTAssertEqual(state, PrimeModalState(count: 2, favoritePrimes: [3, 5, 2]))
         XCTAssert(effects.isEmpty)
     }
-    
+
     func testDeleteFavoritePrimesTapped() throws {
         var state = PrimeModalState(count: 3, favoritePrimes: [3, 5])
         let effects = primeModalReducer(

@@ -20,7 +20,7 @@ struct Step<Value, Action> {
     let update: (inout Value) -> Void
     let file: StaticString
     let line: UInt
-    
+
     init(_ type: StepType,
          _ action: Action,
          file: StaticString = #file,
@@ -32,8 +32,6 @@ struct Step<Value, Action> {
         self.file = file
         self.line = line
     }
-    
-    
 }
 func assert<Value: Equatable, Action: Equatable>(
     initialValue: Value,
@@ -47,7 +45,7 @@ func assert<Value: Equatable, Action: Equatable>(
     var cancellables = Set<AnyCancellable>()
     steps.forEach { step in
         var expected = state
-        
+
         switch step.type {
         case .send:
             if !effects.isEmpty {
@@ -69,18 +67,18 @@ func assert<Value: Equatable, Action: Equatable>(
                 receiveValue: { action = $0 }
             )
             .store(in: &cancellables)
-            
+
             if XCTWaiter.wait(for: [receivedCompletion], timeout: 0.01) != .completed {
                 XCTFail("Timed out waiting for the effect to complete", file: step.file, line: step.line)
             }
-            
+
             XCTAssertEqual(action, step.action, file: step.file, line: step.line)
             effects.append(contentsOf: reducer(&state, action))
         }
         step.update(&expected)
         XCTAssertEqual(state, expected, file: step.file, line: step.line)
     }
-    
+
     if !effects.isEmpty {
         XCTFail("Assertion failed to hanlde \(effects.count) pending effect(s)", file: file, line: line)
     }

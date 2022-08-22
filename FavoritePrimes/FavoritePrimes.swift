@@ -17,11 +17,11 @@ public func favoritePrimesReducer(state: inout [Int], action: FavoritePrimesActi
             state.remove(at: index)
         }
         return []
-        
+
     case let .loadedFavoritePrimes(primes):
         state = primes
         return []
-        
+
     case .saveButtonTapped:
         return [
             Current.fileClient
@@ -29,21 +29,21 @@ public func favoritePrimesReducer(state: inout [Int], action: FavoritePrimesActi
                 .fireAndForget()
         ]
 //            saveEffect(favoritePrimes: state)]
-        
+
     case .loadButtonTapped:
         return [
             Current.fileClient
                 .load("favorite-prime.json")
                 .compactMap { $0 }
                 .decode(type: [Int].self, decoder: JSONDecoder())
-                .catch { error in Empty(completeImmediately: true) }
+                .catch { _ in Empty(completeImmediately: true) }
                 .map(FavoritePrimesAction.loadedFavoritePrimes)
                 .eraseToEffect()
         ]
     }
 }
 
-//private func saveEffect(favoritePrimes: [Int]) -> Effect<FavoritePrimesAction> {
+// private func saveEffect(favoritePrimes: [Int]) -> Effect<FavoritePrimesAction> {
 //    return .fireAndForget {
 //        let data = try! JSONEncoder().encode(favoritePrimes)
 //        let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
@@ -51,7 +51,7 @@ public func favoritePrimesReducer(state: inout [Int], action: FavoritePrimesActi
 //        let favoritePrimeURL = documentURL.appendingPathComponent("favorite-prime.json")
 //        try! data.write(to: favoritePrimeURL)
 //    }
-//}
+// }
 
 
 struct FileClient {
@@ -68,7 +68,6 @@ extension FileClient {
                 let favoritePrimeURL = documentURL.appendingPathComponent(filename)
                 return try? Data(contentsOf: favoritePrimeURL)
             }
-            
         }, save: { filename, data in
             return .fireAndForget {
                 let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
@@ -87,6 +86,7 @@ extension FavoritePrimesEnvironment {
     static let live = FavoritePrimesEnvironment(fileClient: .live)
 }
 
+// swiftlint:disable identifier_name
 var Current = FavoritePrimesEnvironment.live
 
 #if DEBUG
@@ -95,31 +95,32 @@ extension FavoritePrimesEnvironment {
         fileClient: FileClient(
             load: { _ in Effect<Data?>.sync {
                 try! JSONEncoder().encode([2, 31])
-            }},
-            save: { _, _ in .fireAndForget {}}
+            }
+            },
+            save: { _, _ in .fireAndForget {} }
         )
     )
 }
 #endif
-//struct Environment {
+// struct Environment {
 //    var date: () -> Date
-//}
+// }
 //
-//extension Environment {
+// extension Environment {
 //    static let live = Environment(date: Date.init)
-//}
+// }
 //
-//extension Environment {
+// extension Environment {
 //    static let mock = Environment(date: { Date.init(timeIntervalSince1970: 1234567890) })
-//}
+// }
 //
-//#if DEBUG
-//var Current = Environment.live
-//#else
-//let Current = Environment.live
-//#endif
+// #if DEBUG
+// var Current = Environment.live
+// #else
+// let Current = Environment.live
+// #endif
 
-//private let loadEffect = Effect<FavoritePrimesAction?>.sync {
+// private let loadEffect = Effect<FavoritePrimesAction?>.sync {
 //
 //    let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
 //    let documentURL = URL(fileURLWithPath: documentPath)
@@ -128,14 +129,14 @@ extension FavoritePrimesEnvironment {
 //          let favoritePrimes = try? JSONDecoder().decode([Int].self, from: data)
 //    else { return nil }
 //    return FavoritePrimesAction.loadedFavoritePrimes(favoritePrimes)
-//}
+// }
 
 public enum FavoritePrimesAction: Equatable {
     case deleteFavoritePrimes(IndexSet)
     case loadedFavoritePrimes([Int])
     case saveButtonTapped
     case loadButtonTapped
-    
+
     var deleteFavoritePrimes: IndexSet? {
         get {
             guard case let .deleteFavoritePrimes(value) = self else { return nil }
@@ -146,7 +147,7 @@ public enum FavoritePrimesAction: Equatable {
             self = .deleteFavoritePrimes(newValue)
         }
     }
-    
+
     var loadedFavoritePrimes: [Int]? {
         get {
             guard case let .loadedFavoritePrimes(value) = self else { return nil }
@@ -161,11 +162,11 @@ public enum FavoritePrimesAction: Equatable {
 
 public struct FavoritePrimesView: View {
     @ObservedObject var store: Store<[Int], FavoritePrimesAction>
-    
+
     public init(store: Store<[Int], FavoritePrimesAction>) {
         self.store = store
     }
-    
+
     public var body: some View {
         List {
             ForEach(self.store.value, id: \.self) { prime in
@@ -181,7 +182,7 @@ public struct FavoritePrimesView: View {
                 Button("Save") {
                     self.store.send(.saveButtonTapped)
                 }
-                
+
                 Button("Load") {
                     self.store.send(.loadButtonTapped)
                 }

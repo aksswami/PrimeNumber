@@ -239,6 +239,7 @@
 		094AC67C28AB8D0E002C2525 /* PrimeModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeModal.swift; sourceTree = "<group>"; };
 		094AC67E28AB9B81002C2525 /* PrimeNumber.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PrimeNumber.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		09C3096A28ACE1CA003568B7 /* Counter.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Counter.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		09EDDC8328B3543B0017A2CB /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		09F2988F28ADF0D00076AC84 /* Effects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effects.swift; sourceTree = "<group>"; };
 		09F2989128AE4FE90076AC84 /* FavoritePrimes.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FavoritePrimes.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		09F2989228AFFD770076AC84 /* ComposibleArchitectureTestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposibleArchitectureTestSupport.swift; sourceTree = "<group>"; };
@@ -343,6 +344,7 @@
 		094AC5A528AB882A002C2525 = {
 			isa = PBXGroup;
 			children = (
+				09EDDC8328B3543B0017A2CB /* swiftlint.yml */,
 				09F2989128AE4FE90076AC84 /* FavoritePrimes.playground */,
 				09C3096A28ACE1CA003568B7 /* Counter.playground */,
 				094AC67E28AB9B81002C2525 /* PrimeNumber.playground */,
@@ -535,6 +537,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 094AC5DB28AB882B002C2525 /* Build configuration list for PBXNativeTarget "PrimeNumber (iOS)" */;
 			buildPhases = (
+				09EDDC8428B354650017A2CB /* ShellScript */,
 				094AC5AE28AB882B002C2525 /* Sources */,
 				094AC5AF28AB882B002C2525 /* Frameworks */,
 				094AC5B028AB882B002C2525 /* Resources */,
@@ -549,6 +552,8 @@
 				094AC66D28AB8B27002C2525 /* PBXTargetDependency */,
 			);
 			name = "PrimeNumber (iOS)";
+			packageProductDependencies = (
+			);
 			productName = "PrimeNumber (iOS)";
 			productReference = 094AC5B228AB882B002C2525 /* PrimeNumber.app */;
 			productType = "com.apple.product-type.application";
@@ -817,6 +822,8 @@
 				Base,
 			);
 			mainGroup = 094AC5A528AB882A002C2525;
+			packageReferences = (
+			);
 			productRefGroup = 094AC5B328AB882B002C2525 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -925,6 +932,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		09EDDC8428B354650017A2CB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nPATH=/opt/homebrew/bin:$PATH\nif [ -f ./swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ./swiftlint.yml\n  else\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		094AC5AE28AB882B002C2525 /* Sources */ = {

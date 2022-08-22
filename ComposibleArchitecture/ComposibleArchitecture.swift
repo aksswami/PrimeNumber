@@ -12,10 +12,10 @@ import Combine
 struct Parallel<A> {
     let run: (@escaping (A) -> Void) -> Void
 }
-//public typealias Effect<Action> = (@escaping (Action) -> Void) -> Void
+// public typealias Effect<Action> = (@escaping (Action) -> Void) -> Void
 
 
-//public struct Effect<A> {
+// public struct Effect<A> {
 //    public let run: (@escaping (A) -> Void) -> Void
 //
 //    public init(run: @escaping (@escaping (A) -> Void) -> Void) {
@@ -25,16 +25,16 @@ struct Parallel<A> {
 //    public func map<B>(_ f: @escaping (A) -> B) -> Effect<B> {
 //        return Effect<B>(run: { callback in self.run { a in callback(f(a)) }})
 //    }
-//}
+// }
 
 public struct Effect<Output>: Publisher {
     public typealias Failure = Never
-    
+
     let publisher: AnyPublisher<Output, Failure>
-    
+
     public func receive<S>(
         subscriber: S
-    ) where S : Subscriber, Never == S.Failure, Output == S.Input {
+    ) where S: Subscriber, Never == S.Failure, Output == S.Input {
         publisher.receive(subscriber: subscriber)
     }
 }
@@ -52,12 +52,12 @@ public final class Store<Value, Action>: ObservableObject {
     @Published public private(set) var value: Value
     private var viewCancellable: Cancellable?
     private var effectCancellables: Set<AnyCancellable> = []
-    
+
     public init(initialValue: Value, reducer: @escaping Reducer<Value, Action>) {
         self.reducer = reducer
         self.value = initialValue
     }
-    
+
     public func send(_ action: Action) {
         let effects = self.reducer(&self.value, action)
         effects.forEach { effect in
@@ -88,12 +88,12 @@ public final class Store<Value, Action>: ObservableObject {
 //            }
 //        }
     }
-    
+
     // ((Value) -> LocalValue) -> (Store<Value, _>) -> Store<LocalValue, _>
     // ((A) -> B) -> (Store<A,_>) -> Store<B, _>
     // map: ((A) -> B) -> (F<A>) -> F<B>
-    
-    
+
+
     public func view<LocalValue, LocalAction>(
         value toLocalValue: @escaping (Value) -> LocalValue,
         action toGlobalAction: @escaping (LocalAction) -> Action
@@ -103,19 +103,19 @@ public final class Store<Value, Action>: ObservableObject {
                 self.send(toGlobalAction(localAction))
                 localValue = toLocalValue(self.value)
                 return []
-            }
+        }
         localStore.viewCancellable = self.$value.sink { [weak localStore] newValue in
             localStore?.value = toLocalValue(newValue)
         }
-        
+
         return localStore
     }
-    
-    
+
+
     // ((LocalAction) -> Action) -> (Store<_, Action>) -> Store<_, LocalAction>
     // ((B) -> A) -> (Store<_, A>) -> Store<_, B>
     // ((B) -> A) -> (F<A>) -> F<B>
-    
+
     //    func view<LocalAction>(
     //        _ f: @escaping (LocalAction) -> Action
     //    ) -> Store<Value, LocalAction> {
@@ -153,7 +153,7 @@ public func pullback<LocalValue, GlobalValue, LocalAction, GlobalAction>(
     return { globalValue, globalAction -> [Effect<GlobalAction>] in
         guard let localAction = globalAction[keyPath: action] else { return [] }
         let localEffects = reducer(&globalValue[keyPath: value], localAction)
-        
+
         return localEffects.map { localEffect in
             localEffect
                 .map { localAction -> GlobalAction in

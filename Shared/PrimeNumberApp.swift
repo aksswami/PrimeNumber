@@ -7,7 +7,7 @@
 
 import SwiftUI
 import ComposibleArchitecture
-//import Counter
+// import Counter
 @main
 struct PrimeNumberApp: App {
     var body: some Scene {
